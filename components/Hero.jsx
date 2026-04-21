@@ -112,7 +112,7 @@ export default function Hero({ data }) {
               <img
                 src={data.hero_image_url}
                 alt="Himanshu Bhardwaj — FONSI"
-                className="relative z-10 w-full h-full object-cover object-center"
+                className="relative z-10 w-full h-full object-contain object-bottom"
               />
             ) : (
               <div className="relative z-10 text-center px-6">
