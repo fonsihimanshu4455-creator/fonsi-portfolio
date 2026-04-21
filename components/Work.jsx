@@ -22,7 +22,7 @@ export default function Work({ data = [] }) {
         {data.map((p) => (
           <StaggerItem key={p.id || p.title}>
             <a
-              href={p.link || "#contact"}
+              href={p.case_study_slug ? `/case-studies/${p.case_study_slug}` : (p.link || "#contact")}
               className="group block card-elevated rounded-2xl overflow-hidden hover:border-[color:var(--color-red)]/40 hover:-translate-y-1 transition-all duration-300"
             >
               <div
