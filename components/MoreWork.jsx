@@ -1,26 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeading from "./ui/SectionHeading";
 import PillButton from "./ui/PillButton";
 import clsx from "clsx";
 
-const FILTERS = ["All", "Ads", "Design", "Video"];
+export default function MoreWork({ data = [] }) {
+  const filters = useMemo(() => {
+    const cats = Array.from(new Set(data.map((d) => d.category).filter(Boolean)));
+    return ["All", ...cats];
+  }, [data]);
 
-const ITEMS = [
-  { title: "Supplement Brand", tag: "Ads", gradient: "from-[#6366f1] to-[#312e81]" },
-  { title: "Fashion Reel Cut", tag: "Video", gradient: "from-[#f59e0b] to-[#b45309]" },
-  { title: "Café Launch Kit", tag: "Design", gradient: "from-[#a78bfa] to-[#6d28d9]" },
-  { title: "EdTech Funnel", tag: "Ads", gradient: "from-[#ec4899] to-[#831843]" },
-  { title: "Product Explainer", tag: "Video", gradient: "from-[#10b981] to-[#065f46]" },
-  { title: "Brand Starter Pack", tag: "Design", gradient: "from-[#38bdf8] to-[#0c4a6e]" },
-];
-
-export default function MoreWork() {
   const [active, setActive] = useState("All");
-  const filtered = active === "All" ? ITEMS : ITEMS.filter((i) => i.tag === active);
+  const filtered = active === "All" ? data : data.filter((i) => i.category === active);
 
   return (
     <section id="more-work" className="section">
@@ -37,14 +31,11 @@ export default function MoreWork() {
       </div>
 
       <div className="flex flex-wrap gap-3 mb-8">
-        {FILTERS.map((f) => (
+        {filters.map((f) => (
           <button
             key={f}
             onClick={() => setActive(f)}
-            className={clsx(
-              "pill",
-              active === f ? "pill-red" : "pill-outline"
-            )}
+            className={clsx("pill", active === f ? "pill-red" : "pill-outline")}
           >
             {f}
           </button>
@@ -55,8 +46,8 @@ export default function MoreWork() {
         <AnimatePresence mode="popLayout">
           {filtered.map((p) => (
             <motion.a
-              key={p.title}
-              href="#contact"
+              key={p.id || p.title}
+              href={p.link || "#contact"}
               layout
               initial={{ opacity: 0, scale: 0.94, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -64,11 +55,14 @@ export default function MoreWork() {
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="group card-elevated rounded-2xl overflow-hidden hover:border-[color:var(--color-red)]/40 hover:-translate-y-1 transition-all duration-300"
             >
-              <div className={`h-44 bg-gradient-to-br ${p.gradient} transition-transform duration-500 group-hover:scale-105`} />
+              <div
+                className={`h-44 ${p.image_url ? "" : `bg-gradient-to-br ${p.gradient || "from-[#3b0a0f] to-[#1e1012]"}`} transition-transform duration-500 group-hover:scale-105`}
+                style={p.image_url ? { backgroundImage: `url(${p.image_url})`, backgroundSize: "cover", backgroundPosition: "center" } : undefined}
+              />
               <div className="p-5 flex items-start justify-between gap-3">
                 <div>
                   <div className="font-display font-bold">{p.title}</div>
-                  <div className="text-xs text-[color:var(--color-muted)] mt-1">{p.tag}</div>
+                  <div className="text-xs text-[color:var(--color-muted)] mt-1">{p.category}</div>
                 </div>
                 <div className="w-9 h-9 shrink-0 rounded-full border border-[color:var(--color-stroke)] flex items-center justify-center group-hover:bg-[color:var(--color-red)] group-hover:border-[color:var(--color-red)] group-hover:rotate-45 transition-all duration-300">
                   <ArrowUpRight size={14} />

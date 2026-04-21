@@ -13,25 +13,64 @@ import Faq from "@/components/Faq";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 
-export default function Page() {
+import {
+  getHero,
+  getStats,
+  getServices,
+  getProjects,
+  getFutureProjects,
+  getJourneySteps,
+  getAchievements,
+  getSkills,
+  getTestimonials,
+  getSiteSettings,
+} from "@/lib/queries/public";
+
+export const revalidate = 60;
+
+export default async function Page() {
+  const [
+    hero,
+    stats,
+    services,
+    projects,
+    futureProjects,
+    journey,
+    achievements,
+    skills,
+    testimonials,
+    settings,
+  ] = await Promise.all([
+    getHero(),
+    getStats(),
+    getServices(),
+    getProjects(),
+    getFutureProjects(),
+    getJourneySteps(),
+    getAchievements(),
+    getSkills(),
+    getTestimonials(),
+    getSiteSettings(),
+  ]);
+
   return (
     <>
       <Nav />
       <main>
-        <Hero />
-        <Stats />
+        <Hero data={hero} />
+        <Stats data={stats} />
         <Trusted />
-        <Services />
-        <Work />
-        <MoreWork />
-        <Process />
-        <Achievements />
-        <Skills />
-        <Testimonials />
+        <Services data={services} />
+        <Work data={projects} />
+        <MoreWork data={futureProjects} />
+        <Process data={journey} />
+        <Achievements headline={achievements.headline} wins={achievements.wins} />
+        <Skills data={skills} />
+        <Testimonials data={testimonials} />
         <Faq />
-        <CtaBanner />
+        <CtaBanner settings={settings} />
       </main>
-      <Footer />
+      <Footer settings={settings} />
     </>
   );
 }

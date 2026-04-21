@@ -4,7 +4,17 @@ import DotCluster from "./ui/DotCluster";
 const SERVICES = ["Paid Ads", "Growth Strategy", "Graphic Design", "Video Editing"];
 const COMPANY = ["About Me", "Work", "Contact", "Privacy"];
 
-export default function Footer() {
+const SOCIAL_ICONS = {
+  email: Send,
+  twitter: Twitter,
+  instagram: Instagram,
+  youtube: Youtube,
+};
+
+export default function Footer({ settings = {} }) {
+  const socials = settings.social_links || {};
+  const socialKeys = Object.keys(SOCIAL_ICONS).filter((k) => socials[k]);
+
   return (
     <footer className="mt-10">
       <hr className="dashed-divider" />
@@ -18,35 +28,41 @@ export default function Footer() {
             </span>
           </a>
           <p className="text-sm text-[color:var(--color-muted)] max-w-sm leading-relaxed">
-            Himanshu Bhardwaj — digital marketer, designer, and editor helping brands
-            grow with performance ads and creative that actually converts.
+            {settings.footer_description ||
+              "Himanshu Bhardwaj — digital marketer, designer, and editor helping brands grow with performance ads and creative that actually converts."}
           </p>
 
           <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-sm">
             <div className="flex items-center gap-2 text-[color:var(--color-muted)]">
-              <Mail size={14} /> hello@fonsi.co
+              <Mail size={14} /> {settings.contact_email || "hello@fonsi.co"}
             </div>
             <div className="flex items-center gap-2 text-[color:var(--color-muted)]">
-              <Phone size={14} /> +91 00000 00000
+              <Phone size={14} /> {settings.contact_phone || "+91 00000 00000"}
             </div>
             <div className="flex items-center gap-2 text-[color:var(--color-muted)]">
-              <MapPin size={14} /> India · Worldwide
+              <MapPin size={14} /> {settings.address || "India · Worldwide"}
             </div>
           </div>
-          <p className="mt-3 text-xs text-[color:var(--color-muted)]/80">
-            Available across time zones · India · US · UK · UAE · Global
-          </p>
+          {settings.timezone_line && (
+            <p className="mt-3 text-xs text-[color:var(--color-muted)]/80">
+              {settings.timezone_line}
+            </p>
+          )}
 
           <div className="mt-6 flex gap-3">
-            {[Send, Twitter, Instagram, Youtube].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="w-10 h-10 rounded-full border border-[color:var(--color-stroke)] flex items-center justify-center hover:border-[color:var(--color-red)] hover:text-[color:var(--color-red)] transition-colors"
-              >
-                <Icon size={16} />
-              </a>
-            ))}
+            {(socialKeys.length > 0 ? socialKeys : ["email", "twitter", "instagram", "youtube"]).map((k) => {
+              const Icon = SOCIAL_ICONS[k];
+              const href = socials[k] || "#";
+              return (
+                <a
+                  key={k}
+                  href={href}
+                  className="w-10 h-10 rounded-full border border-[color:var(--color-stroke)] flex items-center justify-center hover:border-[color:var(--color-red)] hover:text-[color:var(--color-red)] transition-colors"
+                >
+                  <Icon size={16} />
+                </a>
+              );
+            })}
           </div>
         </div>
 

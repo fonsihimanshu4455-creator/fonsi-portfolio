@@ -5,96 +5,55 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import SectionHeading from "./ui/SectionHeading";
 import clsx from "clsx";
 
-const TESTIMONIALS = [
-  {
-    name: "Aarav Mehta",
-    ago: "2 days ago",
-    rating: 5,
-    quote:
-      "FONSI rebuilt our ad creatives and funnel from scratch. We went from 1.2x to 4x ROAS in under two months. Communication was sharp, no fluff.",
-    avatar: "A",
-    color: "#ef4444",
-  },
-  {
-    name: "Priya Sharma",
-    ago: "1 week ago",
-    rating: 5,
-    quote:
-      "Himanshu gets performance marketing AND design. Rare combo. Our reels started hitting six-figure views consistently.",
-    avatar: "P",
-    color: "#8b5cf6",
-  },
-  {
-    name: "Rohan Kapoor",
-    ago: "3 weeks ago",
-    rating: 5,
-    quote:
-      "Launched our D2C brand with FONSI. Clear numbers, clear reporting, and creatives that actually moved the needle.",
-    avatar: "R",
-    color: "#10b981",
-  },
-  {
-    name: "Sneha Iyer",
-    ago: "1 month ago",
-    rating: 5,
-    quote:
-      "He treats your money like his own. Scaled our local studio with a lean budget — 3x qualified leads in one quarter.",
-    avatar: "S",
-    color: "#f59e0b",
-  },
-  {
-    name: "Kabir Joshi",
-    ago: "2 months ago",
-    rating: 5,
-    quote:
-      "Best creative + paid combo I've worked with. Hooks are tight, edits are clean, and reporting is brutally honest.",
-    avatar: "K",
-    color: "#06b6d4",
-  },
-];
+const COLORS = ["#ef4444", "#8b5cf6", "#10b981", "#f59e0b", "#06b6d4", "#ec4899"];
 
-export default function Testimonials() {
-  const [idx, setIdx] = useState(2);
+export default function Testimonials({ data = [] }) {
+  const [idx, setIdx] = useState(Math.min(2, Math.max(0, data.length - 1)));
 
-  const prev = () => setIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  const next = () => setIdx((i) => (i + 1) % TESTIMONIALS.length);
+  if (data.length === 0) return null;
 
-  const order = [
-    (idx - 1 + TESTIMONIALS.length) % TESTIMONIALS.length,
-    idx,
-    (idx + 1) % TESTIMONIALS.length,
-  ];
+  const prev = () => setIdx((i) => (i - 1 + data.length) % data.length);
+  const next = () => setIdx((i) => (i + 1) % data.length);
+
+  const order = data.length >= 3
+    ? [(idx - 1 + data.length) % data.length, idx, (idx + 1) % data.length]
+    : [idx];
 
   return (
     <section className="section">
       <SectionHeading>Experiences That Inspire</SectionHeading>
 
       <div className="flex justify-center flex-wrap gap-3 mb-10">
-        {TESTIMONIALS.map((t, i) => (
+        {data.map((t, i) => (
           <button
-            key={t.name}
+            key={t.id || t.name}
             onClick={() => setIdx(i)}
             aria-label={`Select testimonial from ${t.name}`}
             className={clsx(
-              "w-12 h-12 rounded-full flex items-center justify-center font-bold text-white transition-all",
+              "w-12 h-12 rounded-full overflow-hidden flex items-center justify-center font-bold text-white transition-all",
               i === idx
                 ? "ring-2 ring-[color:var(--color-red)] ring-offset-4 ring-offset-[color:var(--color-bg)] scale-110"
                 : "opacity-70 hover:opacity-100"
             )}
-            style={{ background: t.color }}
+            style={{
+              background: t.photo_url ? "#000" : COLORS[i % COLORS.length],
+              backgroundImage: t.photo_url ? `url(${t.photo_url})` : undefined,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
           >
-            {t.avatar}
+            {!t.photo_url && t.name?.[0]}
           </button>
         ))}
       </div>
 
       <div className="grid md:grid-cols-3 gap-5 items-stretch">
         {order.map((i, slot) => {
-          const t = TESTIMONIALS[i];
-          const isCenter = slot === 1;
+          const t = data[i];
+          const isCenter = data.length >= 3 ? slot === 1 : true;
           return (
             <div
-              key={`${t.name}-${slot}`}
+              key={`${t.id || t.name}-${slot}`}
               className={clsx(
                 "rounded-2xl p-6 card-elevated",
                 isCenter && "border-[color:var(--color-red)]/70",
@@ -103,16 +62,16 @@ export default function Testimonials() {
             >
               <div className="flex items-baseline gap-2 mb-3">
                 <div className="font-display font-bold">{t.name}</div>
-                <div className="text-xs text-[color:var(--color-muted)]">{t.ago}</div>
+                <div className="text-xs text-[color:var(--color-muted)]">{t.days_ago}</div>
               </div>
               <div className="flex items-center gap-2 mb-4">
-                {Array.from({ length: t.rating }).map((_, si) => (
+                {Array.from({ length: Math.round(t.rating) }).map((_, si) => (
                   <Star key={si} size={14} className="text-yellow-400 fill-yellow-400" />
                 ))}
-                <span className="text-sm font-medium ml-1">{t.rating.toFixed(1)}</span>
+                <span className="text-sm font-medium ml-1">{Number(t.rating).toFixed(1)}</span>
               </div>
               <p className="text-sm text-[color:var(--color-text)]/85 leading-relaxed">
-                {t.quote}
+                {t.review_text}
               </p>
             </div>
           );

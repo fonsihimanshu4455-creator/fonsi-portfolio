@@ -9,7 +9,7 @@ import DotCluster from "./ui/DotCluster";
 
 const EASE = [0.22, 1, 0.36, 1];
 
-export default function Hero() {
+export default function Hero({ data }) {
   return (
     <section id="home" className="relative overflow-hidden">
       <div className="section pt-10 md:pt-16 grid md:grid-cols-2 gap-10 items-center relative">
@@ -29,9 +29,23 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE }}
           >
-            Turning <OutlineBox>Ads</OutlineBox> Into
-            <br />
-            Actual Revenue
+            {data.heading_prefix}
+            <OutlineBox>{data.heading_highlight}</OutlineBox>
+            {data.heading_suffix?.includes("\n") ? (
+              <>
+                {data.heading_suffix.split("\n").map((s, i, arr) => (
+                  <span key={i}>
+                    {s}
+                    {i < arr.length - 1 && <br />}
+                  </span>
+                ))}
+              </>
+            ) : (
+              <>
+                <br />
+                {data.heading_suffix?.trimStart()}
+              </>
+            )}
           </motion.h1>
           <motion.p
             className="mt-6 max-w-md text-[color:var(--color-muted)] text-base md:text-lg leading-relaxed"
@@ -39,11 +53,12 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: EASE }}
           >
-            I&apos;m Himanshu Bhardwaj — FONSI. I run performance ads, grow brands,
-            and design graphics & edit video that stop the scroll and move the numbers.
-            <span className="block mt-3 text-sm text-[color:var(--color-text)]/70">
-              Serving clients across India, US, UK, UAE & globally — async-first across time zones.
-            </span>
+            {data.subheading}
+            {data.global_line && (
+              <span className="block mt-3 text-sm text-[color:var(--color-text)]/70">
+                {data.global_line}
+              </span>
+            )}
           </motion.p>
 
           <motion.div
@@ -52,12 +67,14 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
           >
-            <PillButton href="#contact">Start a Project</PillButton>
+            <PillButton href={data.cta_primary_link || "#contact"}>
+              {data.cta_primary_text || "Start a Project"}
+            </PillButton>
             <a
-              href="#work"
+              href={data.cta_secondary_link || "#work"}
               className="group inline-flex items-center gap-2 text-[color:var(--color-text)] font-medium hover:text-[color:var(--color-red)] transition-colors"
             >
-              See My Work
+              {data.cta_secondary_text || "See My Work"}
               <ArrowRight
                 size={18}
                 className="transition-transform group-hover:translate-x-1"

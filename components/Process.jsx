@@ -3,30 +3,7 @@
 import { motion } from "framer-motion";
 import SectionHeading from "./ui/SectionHeading";
 
-const STEPS = [
-  {
-    n: "1",
-    title: "Discover",
-    desc: "Audit your brand, offer, audience and numbers. Find the real bottleneck.",
-  },
-  {
-    n: "2",
-    title: "Strategy",
-    desc: "Map the funnel, channels, creatives and KPIs. Zero fluff, clear plan.",
-  },
-  {
-    n: "3",
-    title: "Execute",
-    desc: "Ads live, creatives shipped, video cut. Daily eyes on the dashboard.",
-  },
-  {
-    n: "4",
-    title: "Scale",
-    desc: "Double down on what works, kill what doesn't. ROAS up, CAC down.",
-  },
-];
-
-export default function Process() {
+export default function Process({ data = [] }) {
   return (
     <section id="about" className="section">
       <SectionHeading>My Process</SectionHeading>
@@ -61,9 +38,9 @@ export default function Process() {
             show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
           }}
         >
-          {STEPS.map((s) => (
+          {data.map((s) => (
             <motion.div
-              key={s.n}
+              key={s.id || s.step_number}
               className="flex gap-4"
               variants={{
                 hidden: { opacity: 0, y: 22 },
@@ -71,12 +48,12 @@ export default function Process() {
               }}
             >
               <div className="shrink-0 w-10 h-10 rounded-md border border-[color:var(--color-red)] text-[color:var(--color-red)] flex items-center justify-center font-display font-bold">
-                {s.n}
+                {s.step_number}
               </div>
               <div>
                 <div className="font-display text-lg font-bold">{s.title}</div>
                 <p className="text-sm text-[color:var(--color-muted)] mt-2 leading-relaxed">
-                  {s.desc}
+                  {s.description}
                 </p>
               </div>
             </motion.div>

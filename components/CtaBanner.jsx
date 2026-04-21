@@ -4,16 +4,24 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import OutlineBox from "./ui/OutlineBox";
 
-export default function CtaBanner() {
+export default function CtaBanner({ settings = {} }) {
   const [email, setEmail] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
     if (!email) return;
+    const to = settings.contact_email || "hello@fonsi.co";
     const subject = encodeURIComponent("Let's build something with FONSI");
     const body = encodeURIComponent(`Hi Himanshu, I'd like to connect. My email: ${email}`);
-    window.location.href = `mailto:hello@fonsi.co?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
   };
+
+  const prefix = settings.cta_heading_prefix ?? "Let's Build\nSomething ";
+  const highlight = settings.cta_heading_highlight ?? "Amazing";
+  const suffix = settings.cta_heading_suffix ?? "";
+  const subcopy =
+    settings.cta_subcopy ??
+    "Tell me about your brand and your market — wherever you're based. I work across time zones and deliver async, with clear updates every step.";
 
   return (
     <section id="contact" className="section">
@@ -30,14 +38,16 @@ export default function CtaBanner() {
         <div className="relative grid md:grid-cols-[1.4fr_1fr] gap-10 items-center">
           <div>
             <h3 className="font-display font-extrabold text-4xl md:text-6xl leading-[1.05]">
-              Let&apos;s Build
-              <br />
-              Something <OutlineBox>Amazing</OutlineBox>
+              {prefix.split("\n").map((s, i, arr) => (
+                <span key={i}>
+                  {s}
+                  {i < arr.length - 1 && <br />}
+                </span>
+              ))}
+              <OutlineBox>{highlight}</OutlineBox>
+              {suffix}
             </h3>
-            <p className="mt-5 text-[color:var(--color-muted)] max-w-md">
-              Tell me about your brand and your market — wherever you&apos;re based.
-              I work across time zones and deliver async, with clear updates every step.
-            </p>
+            <p className="mt-5 text-[color:var(--color-muted)] max-w-md">{subcopy}</p>
 
             <form onSubmit={onSubmit} className="mt-7 flex items-center gap-2 max-w-md">
               <div className="flex-1 flex items-center gap-2 rounded-full border border-[color:var(--color-stroke)] bg-[color:var(--color-surface)] pl-5 pr-1 py-1">
