@@ -100,21 +100,31 @@ export default function Hero({ data }) {
             </GhostText>
           </div>
 
-          <div className="relative z-10 w-full max-w-sm aspect-[3/4] rounded-3xl overflow-hidden card-elevated flex items-center justify-center">
-            <div
-              className="absolute inset-0 glow-breath"
-              style={{
-                background:
-                  "radial-gradient(closest-side, rgba(229,28,35,0.35), transparent 70%)",
-              }}
-            />
-            {data.hero_image_url ? (
+          {data.hero_image_url ? (
+            <div className="relative z-10 w-full max-w-md aspect-[3/4] flex items-end justify-center">
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 glow-breath"
+                style={{
+                  background:
+                    "radial-gradient(closest-side, rgba(229,28,35,0.45), transparent 70%)",
+                }}
+              />
               <img
                 src={data.hero_image_url}
                 alt="Himanshu Bhardwaj — FONSI"
-                className="relative z-10 w-full h-full object-contain object-bottom"
+                className="relative z-10 w-full h-full object-contain object-bottom drop-shadow-[0_20px_60px_rgba(229,28,35,0.35)]"
               />
-            ) : (
+            </div>
+          ) : (
+            <div className="relative z-10 w-full max-w-sm aspect-[3/4] rounded-3xl overflow-hidden card-elevated flex items-center justify-center">
+              <div
+                className="absolute inset-0 glow-breath"
+                style={{
+                  background:
+                    "radial-gradient(closest-side, rgba(229,28,35,0.35), transparent 70%)",
+                }}
+              />
               <div className="relative z-10 text-center px-6">
                 <motion.div
                   aria-hidden="true"
@@ -128,8 +138,8 @@ export default function Hero({ data }) {
                   Your hero image goes here
                 </p>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </motion.div>
       </div>
     </section>
