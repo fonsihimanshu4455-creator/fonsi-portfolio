@@ -1,7 +1,14 @@
 import { Mail, Phone, MapPin, Instagram, Twitter, Youtube, Send } from "lucide-react";
 import DotCluster from "./ui/DotCluster";
 
-const SERVICES = ["Paid Ads", "Growth Strategy", "Graphic Design", "Video Editing"];
+const SERVICES = [
+  "Digital Ads",
+  "Website Development",
+  "SEO",
+  "GMB",
+  "Graphic Design",
+  "Video Editing",
+];
 const COMPANY = ["About Me", "Work", "Contact", "Privacy"];
 
 const SOCIAL_ICONS = {

@@ -9,8 +9,8 @@ insert into hero_content (id, heading_prefix, heading_highlight, heading_suffix,
                           cta_primary_text, cta_primary_link,
                           cta_secondary_text, cta_secondary_link)
 values (1, 'Turning ', 'Ads', ' Into Actual Revenue',
-        'I''m Himanshu Bhardwaj — FONSI. I run performance ads, grow brands, and design graphics & edit video that stop the scroll and move the numbers.',
-        'Serving clients across India, US, UK, UAE & globally — async-first across time zones.',
+        'Digital marketing expert running high-ROI Google and Meta ads, and full-stack web developer crafting blazing-fast, SEO-ready websites. Serving businesses across India, US, UK, UAE, and globally. Let''s turn your vision into measurable growth.',
+        '',
         'Start a Project', '#contact',
         'See My Work', '#work')
 on conflict (id) do update set
@@ -35,10 +35,12 @@ insert into stats (value, label, "order") values
 -- Services
 delete from services;
 insert into services (title, description, icon_name, "order") values
-  ('Paid Ads',         'Meta & Google campaigns built around real buyer intent. Creatives that convert, funnels that scale.', 'megaphone', 1),
-  ('Growth Strategy',  'End-to-end marketing plans — offer, audience, channels, metrics. From first $1 to first $100K.',     'trending',  2),
-  ('Graphic Design',   'Ad creatives, brand kits, social posts. Clean, conversion-led, scroll-stopping visual work.',         'palette',   3),
-  ('Video Editing',    'UGC edits, reels, product videos. Punchy cuts with hooks that hold attention to the CTA.',            'film',      4);
+  ('Digital Ads',                 'Meta & Google campaigns built around real buyer intent. Creatives that convert, funnels that scale.',                                              'megaphone',  1),
+  ('High-Performance Websites',   'Lightning-fast, SEO-ready websites built with modern tech. 90+ PageSpeed scores, mobile-first, conversion-focused. From landing pages to full business sites.', 'globe',      2),
+  ('SEO',                         'On-page SEO, schema, technical fixes and content strategy that move you up the SERPs and bring sustainable organic traffic.',                      'search',     3),
+  ('Google My Business (GMB)',    'GMB setup and optimization to dominate local maps, win reviews and book calls from your service area.',                                            'mappin',     4),
+  ('Graphic Design',              'Ad creatives, brand kits, social posts. Clean, conversion-led, scroll-stopping visual work.',                                                     'palette',    5),
+  ('Video Editing',               'UGC edits, reels, product videos. Punchy cuts with hooks that hold attention to the CTA.',                                                         'film',       6);
 
 -- Projects (Recent Work)
 delete from projects;
@@ -51,12 +53,16 @@ insert into projects (title, category, description, gradient, link, "order") val
 -- Future Projects (More Work)
 delete from future_projects;
 insert into future_projects (title, category, gradient, link, "order") values
-  ('Supplement Brand',    'Ads',    'from-[#6366f1] to-[#312e81]', '#contact', 1),
-  ('Fashion Reel Cut',    'Video',  'from-[#f59e0b] to-[#b45309]', '#contact', 2),
-  ('Café Launch Kit',     'Design', 'from-[#a78bfa] to-[#6d28d9]', '#contact', 3),
-  ('EdTech Funnel',       'Ads',    'from-[#ec4899] to-[#831843]', '#contact', 4),
-  ('Product Explainer',   'Video',  'from-[#10b981] to-[#065f46]', '#contact', 5),
-  ('Brand Starter Pack',  'Design', 'from-[#38bdf8] to-[#0c4a6e]', '#contact', 6);
+  ('D2C Launch Site',       'Websites', 'from-[#0ea5e9] to-[#0c4a6e]', '#contact', 1),
+  ('Supplement Brand',      'Ads',      'from-[#6366f1] to-[#312e81]', '#contact', 2),
+  ('Local SEO Boost',       'SEO',      'from-[#22c55e] to-[#14532d]', '#contact', 3),
+  ('Plumber GMB Setup',     'GMB',      'from-[#f97316] to-[#7c2d12]', '#contact', 4),
+  ('Fashion Reel Cut',      'Video',    'from-[#f59e0b] to-[#b45309]', '#contact', 5),
+  ('Café Launch Kit',       'Design',   'from-[#a78bfa] to-[#6d28d9]', '#contact', 6),
+  ('SaaS Marketing Site',   'Websites', 'from-[#0ea5e9] to-[#1e3a8a]', '#contact', 7),
+  ('EdTech Funnel',         'Ads',      'from-[#ec4899] to-[#831843]', '#contact', 8),
+  ('Product Explainer',     'Video',    'from-[#10b981] to-[#065f46]', '#contact', 9),
+  ('Brand Starter Pack',    'Design',   'from-[#38bdf8] to-[#0c4a6e]', '#contact', 10);
 
 -- Journey Steps
 delete from journey_steps;
@@ -90,6 +96,16 @@ insert into testimonials (name, role, rating, review_text, days_ago, "order") va
   ('Rohan Kapoor', 'Co-founder',    5.0, 'Launched our D2C brand with FONSI. Clear numbers, clear reporting, and creatives that actually moved the needle.',                       '3 weeks ago',3),
   ('Sneha Iyer',   'Owner',         5.0, 'He treats your money like his own. Scaled our local studio with a lean budget — 3x qualified leads in one quarter.',                     '1 month ago',4),
   ('Kabir Joshi',  'Growth Lead',   5.0, 'Best creative + paid combo I''ve worked with. Hooks are tight, edits are clean, and reporting is brutally honest.',                     '2 months ago',5);
+
+-- Website Features (Why My Websites Outperform)
+delete from website_features;
+insert into website_features (icon_name, title, description, "order") values
+  ('zap',        'Blazing Fast Speed',     '90+ PageSpeed scores. Optimized images, lazy loading, and clean code ensure your site loads in under 2 seconds.', 1),
+  ('search',     'SEO-Ready from Day One', 'On-page SEO baked in — proper meta tags, schema markup, sitemap, semantic HTML, and Core Web Vitals optimized.',  2),
+  ('mappin',     'GMB & Local SEO',        'Google My Business optimization included. Rank in local maps, get calls, and dominate your service area.',          3),
+  ('smartphone', 'Mobile-First Design',    'Over 70% of traffic is mobile. Every site is designed mobile-first with flawless responsive layouts.',                4),
+  ('trending',   'Conversion-Focused',     'Strategic CTAs, trust signals, and user flows designed to turn visitors into leads and customers.',                   5),
+  ('rocket',     'Fast Delivery',          'Most websites delivered in 7–14 days. No endless back-and-forth — clear process, quick turnaround.',                  6);
 
 -- Site Settings
 insert into site_settings (id, contact_email, contact_phone, address, timezone_line,

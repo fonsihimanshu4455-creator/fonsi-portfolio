@@ -125,6 +125,18 @@ create table if not exists testimonials (
   updated_at timestamptz default now()
 );
 
+-- ----- 11. website_features (Why My Websites Outperform) -------------------
+create table if not exists website_features (
+  id uuid primary key default gen_random_uuid(),
+  icon_name text not null default 'zap',
+  title text not null,
+  description text not null,
+  "order" int not null default 0,
+  is_visible boolean not null default true,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+
 -- ----- 10. site_settings ----------------------------------------------------
 create table if not exists site_settings (
   id int primary key default 1,
@@ -148,7 +160,8 @@ declare t text;
 begin
   for t in select unnest(array[
     'hero_content','stats','services','projects','future_projects',
-    'journey_steps','achievements','skills','testimonials','site_settings'
+    'journey_steps','achievements','skills','testimonials','site_settings',
+    'website_features'
   ]) loop
     execute format(
       'drop trigger if exists set_updated_at on %I; ' ||
@@ -170,6 +183,7 @@ alter table achievements     enable row level security;
 alter table skills           enable row level security;
 alter table testimonials     enable row level security;
 alter table site_settings    enable row level security;
+alter table website_features enable row level security;
 
 -- Singletons: public can always read
 do $$
@@ -191,7 +205,8 @@ declare t text;
 begin
   for t in select unnest(array[
     'stats','services','projects','future_projects',
-    'journey_steps','achievements','skills','testimonials'
+    'journey_steps','achievements','skills','testimonials',
+    'website_features'
   ]) loop
     execute format('drop policy if exists "public read visible" on %I;', t);
     execute format('create policy "public read visible" on %I for select to anon using (is_visible = true);', t);

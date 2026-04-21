@@ -5,6 +5,7 @@ import Trusted from "@/components/Trusted";
 import Services from "@/components/Services";
 import Work from "@/components/Work";
 import MoreWork from "@/components/MoreWork";
+import WebsiteFeatures from "@/components/WebsiteFeatures";
 import Process from "@/components/Process";
 import Achievements from "@/components/Achievements";
 import Skills from "@/components/Skills";
@@ -19,6 +20,7 @@ import {
   getServices,
   getProjects,
   getFutureProjects,
+  getWebsiteFeatures,
   getJourneySteps,
   getAchievements,
   getSkills,
@@ -35,6 +37,7 @@ export default async function Page() {
     services,
     projects,
     futureProjects,
+    websiteFeatures,
     journey,
     achievements,
     skills,
@@ -46,6 +49,7 @@ export default async function Page() {
     getServices(),
     getProjects(),
     getFutureProjects(),
+    getWebsiteFeatures(),
     getJourneySteps(),
     getAchievements(),
     getSkills(),
@@ -63,6 +67,7 @@ export default async function Page() {
         <Services data={services} />
         <Work data={projects} />
         <MoreWork data={futureProjects} />
+        <WebsiteFeatures data={websiteFeatures} />
         <Process data={journey} />
         <Achievements headline={achievements.headline} wins={achievements.wins} />
         <Skills data={skills} />
