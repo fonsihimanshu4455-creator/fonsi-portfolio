@@ -1,4 +1,5 @@
 import DotCluster from "./ui/DotCluster";
+import { Stagger, StaggerItem } from "./ui/Reveal";
 
 const STATS = [
   { value: "100+", label: "Campaigns Run" },
@@ -14,18 +15,18 @@ export default function Stats() {
         <div className="flex items-center justify-between gap-6 flex-wrap">
           <DotCluster size={56} className="hidden md:block" />
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-14 flex-1">
+          <Stagger className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-14 flex-1">
             {STATS.map((s) => (
-              <div key={s.label} className="flex items-baseline gap-3">
+              <StaggerItem key={s.label} className="flex items-baseline gap-3">
                 <div className="font-display text-4xl md:text-5xl font-extrabold text-[color:var(--color-text)]">
                   {s.value}
                 </div>
                 <div className="text-sm text-[color:var(--color-muted)] leading-tight max-w-[7rem]">
                   {s.label}
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
 
           <DotCluster size={56} className="hidden md:block" />
         </div>

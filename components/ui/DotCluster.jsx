@@ -8,7 +8,7 @@ const PATTERN = [
   [2, 4], [3, 4],
 ];
 
-export default function DotCluster({ size = 56, color = "var(--color-red)", className }) {
+export default function DotCluster({ size = 56, color = "var(--color-red)", pulse = true, className }) {
   const cell = size / 6;
   const r = cell * 0.35;
   return (
@@ -16,7 +16,7 @@ export default function DotCluster({ size = 56, color = "var(--color-red)", clas
       width={size}
       height={size}
       viewBox={`0 0 ${size} ${size}`}
-      className={clsx("inline-block shrink-0", className)}
+      className={clsx("inline-block shrink-0", pulse && "dot-pulse", className)}
       aria-hidden="true"
     >
       {PATTERN.map(([x, y], i) => (

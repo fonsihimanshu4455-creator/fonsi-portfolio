@@ -130,3 +130,47 @@ body {
   background: var(--color-red);
   color: #fff;
 }
+
+@keyframes dash-march {
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+.marching {
+  animation: dash-march 1.8s linear infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.88); }
+}
+.dot-pulse circle {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: dot-pulse 2.4s ease-in-out infinite;
+}
+.dot-pulse circle:nth-child(3n)  { animation-delay: 0.2s; }
+.dot-pulse circle:nth-child(3n+1){ animation-delay: 0.6s; }
+.dot-pulse circle:nth-child(3n+2){ animation-delay: 1s; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes glow-breath {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.glow-breath {
+  animation: glow-breath 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marching, .dot-pulse circle, .marquee-track, .glow-breath {
+    animation: none !important;
+  }
+}
