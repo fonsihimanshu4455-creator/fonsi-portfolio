@@ -50,7 +50,7 @@ export default async function CaseStudyPage({ params }) {
 
   return (
     <>
-      <Nav />
+      <Nav settings={settings} />
       <main>
         <section className="section pt-10">
           <Reveal>

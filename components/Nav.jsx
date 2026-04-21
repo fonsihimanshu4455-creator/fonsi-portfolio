@@ -14,15 +14,19 @@ const LINKS = [
   { href: "/#about", label: "About" },
 ];
 
-export default function Nav() {
+export default function Nav({ settings = {} }) {
   const [open, setOpen] = useState(false);
   const { openForm } = useLead();
 
+  const wordmark = settings.logo_wordmark ?? "FONSI";
+  const showWordmark = !settings.logo_hide_wordmark;
+  const imageUrl = settings.logo_url || null;
+
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-[color:var(--color-bg)]/60 border-b border-[color:var(--color-stroke)]">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-8 h-20 flex items-center justify-between">
-        <a href="#home" aria-label="FONSI home">
-          <Logo size="sm" />
+      <div className="max-w-[1280px] mx-auto px-6 md:px-8 h-16 md:h-20 flex items-center justify-between">
+        <a href="/#home" aria-label={`${wordmark} home`}>
+          <Logo size="sm" wordmark={wordmark} showWordmark={showWordmark} imageUrl={imageUrl} />
         </a>
 
         <nav className="hidden md:flex items-center gap-8">

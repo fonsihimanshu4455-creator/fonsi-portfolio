@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import OutlineBox from "./ui/OutlineBox";
 import { useLead } from "./LeadContext";
+import { characterStyle } from "@/lib/characterStyle";
 
 export default function CtaBanner({ settings = {} }) {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ export default function CtaBanner({ settings = {} }) {
 
   return (
     <section id="contact" className="section">
-      <div className="relative overflow-hidden rounded-3xl card-elevated p-8 md:p-14">
+      <div className="relative overflow-hidden rounded-3xl card-elevated p-6 sm:p-8 md:p-14">
         <div
           aria-hidden="true"
           className="absolute -right-20 top-0 bottom-0 w-[40%] pointer-events-none"
@@ -35,7 +36,7 @@ export default function CtaBanner({ settings = {} }) {
 
         <div className="relative grid md:grid-cols-[1.4fr_1fr] gap-10 items-center">
           <div>
-            <h3 className="font-display font-extrabold text-4xl md:text-6xl leading-[1.05]">
+            <h3 className="font-display font-extrabold text-3xl sm:text-4xl md:text-6xl leading-[1.05]">
               {prefix.split("\n").map((s, i, arr) => (
                 <span key={i}>
                   {s}
@@ -82,6 +83,7 @@ export default function CtaBanner({ settings = {} }) {
                 <img
                   src={settings.cta_character_url}
                   alt=""
+                  style={characterStyle(settings.character_settings?.cta)}
                   className="relative z-10 w-full h-full object-contain object-bottom drop-shadow-[0_20px_60px_rgba(229,28,35,0.35)]"
                 />
               ) : (

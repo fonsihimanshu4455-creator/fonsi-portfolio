@@ -21,7 +21,7 @@ export default async function BlogIndex() {
 
   return (
     <>
-      <Nav />
+      <Nav settings={settings} />
       <main>
         <section className="section">
           <SectionHeading eyebrow="Insights">The FONSI Blog</SectionHeading>

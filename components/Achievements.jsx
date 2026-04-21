@@ -1,7 +1,8 @@
 import SectionHeading from "./ui/SectionHeading";
 import DotCluster from "./ui/DotCluster";
+import { characterStyle } from "@/lib/characterStyle";
 
-export default function Achievements({ headline, wins = [], characterUrl }) {
+export default function Achievements({ headline, wins = [], characterUrl, characterSettings }) {
   return (
     <section className="section relative">
       {characterUrl && (
@@ -9,6 +10,7 @@ export default function Achievements({ headline, wins = [], characterUrl }) {
           src={characterUrl}
           alt=""
           aria-hidden="true"
+          style={characterStyle(characterSettings)}
           className="hidden lg:block absolute right-0 top-8 w-56 xl:w-64 pointer-events-none select-none drop-shadow-[0_20px_60px_rgba(229,28,35,0.35)] z-0"
         />
       )}
@@ -17,12 +19,12 @@ export default function Achievements({ headline, wins = [], characterUrl }) {
           <SectionHeading>Achievements</SectionHeading>
           {headline && (
             <>
-              <div className="flex items-start gap-4 mt-2">
-                <div className="font-display font-extrabold text-[8rem] md:text-[10rem] leading-none text-[color:var(--color-red)]">
+              <div className="flex items-start gap-3 md:gap-4 mt-2">
+                <div className="font-display font-extrabold text-[5.5rem] sm:text-[7rem] md:text-[9rem] lg:text-[10rem] leading-none text-[color:var(--color-red)]">
                   {headline.number}
                   <span className="text-[color:var(--color-red-hot)]">+</span>
                 </div>
-                <DotCluster size={64} className="mt-10" />
+                <DotCluster size={48} className="mt-6 md:mt-10 md:w-16 md:h-16" />
               </div>
               <p className="text-[color:var(--color-muted)] mt-4 max-w-md">
                 {headline.description}
@@ -32,6 +34,7 @@ export default function Achievements({ headline, wins = [], characterUrl }) {
                   src={characterUrl}
                   alt=""
                   aria-hidden="true"
+                  style={characterStyle(characterSettings)}
                   className="lg:hidden mt-6 w-40 drop-shadow-[0_10px_30px_rgba(229,28,35,0.35)]"
                 />
               )}

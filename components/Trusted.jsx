@@ -31,11 +31,11 @@ export default function Trusted() {
             "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
         }}
       >
-        <div className="marquee-track flex w-max gap-14 whitespace-nowrap">
+        <div className="marquee-track flex w-max gap-8 sm:gap-14 whitespace-nowrap">
           {loop.map((b, i) => (
             <span
               key={`${b}-${i}`}
-              className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-[color:var(--color-text)]/35 hover:text-[color:var(--color-red)] transition-colors"
+              className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[color:var(--color-text)]/35 hover:text-[color:var(--color-red)] transition-colors"
             >
               {b}
             </span>

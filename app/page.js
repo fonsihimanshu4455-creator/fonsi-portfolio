@@ -59,7 +59,7 @@ export default async function Page() {
 
   return (
     <>
-      <Nav />
+      <Nav settings={settings} />
       <main>
         <Hero data={hero} />
         <Stats data={stats} />
@@ -68,13 +68,22 @@ export default async function Page() {
         <Work data={projects} />
         <MoreWork data={futureProjects} />
         <WebsiteFeatures data={websiteFeatures} />
-        <Process data={journey} characterUrl={settings.process_character_url} />
+        <Process
+          data={journey}
+          characterUrl={settings.process_character_url}
+          characterSettings={settings.character_settings?.process}
+        />
         <Achievements
           headline={achievements.headline}
           wins={achievements.wins}
           characterUrl={settings.achievements_character_url}
+          characterSettings={settings.character_settings?.achievements}
         />
-        <Skills data={skills} characterUrl={settings.skills_character_url} />
+        <Skills
+          data={skills}
+          characterUrl={settings.skills_character_url}
+          characterSettings={settings.character_settings?.skills}
+        />
         <Testimonials data={testimonials} />
         <Faq />
         <CtaBanner settings={settings} />

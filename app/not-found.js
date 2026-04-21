@@ -5,6 +5,7 @@ import PillButton from "@/components/ui/PillButton";
 import OutlineBox from "@/components/ui/OutlineBox";
 import GhostText from "@/components/ui/GhostText";
 import { getSiteSettings } from "@/lib/queries/public";
+import { characterStyle } from "@/lib/characterStyle";
 
 export const metadata = {
   title: "Page not found",
@@ -16,7 +17,7 @@ export default async function NotFound() {
 
   return (
     <>
-      <Nav />
+      <Nav settings={settings} />
       <main>
         <section className="section min-h-[70vh] flex items-center">
           <div className="grid md:grid-cols-2 gap-10 items-center w-full">
@@ -55,6 +56,7 @@ export default async function NotFound() {
                 <img
                   src={settings.not_found_character_url}
                   alt=""
+                  style={characterStyle(settings.character_settings?.not_found)}
                   className="relative z-10 w-full max-w-sm object-contain object-bottom drop-shadow-[0_20px_60px_rgba(229,28,35,0.35)]"
                 />
               ) : (

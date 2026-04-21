@@ -12,10 +12,10 @@ export default function SectionHeading({ children, eyebrow, align = "left" }) {
           </span>
         )}
         <div className="flex items-center gap-3">
-          <h2 className="font-display text-4xl md:text-5xl font-bold leading-[1.05]">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.05]">
             {children}
           </h2>
-          <DotCluster size={34} />
+          <DotCluster size={28} className="sm:w-8 sm:h-8" />
         </div>
       </div>
     </Reveal>

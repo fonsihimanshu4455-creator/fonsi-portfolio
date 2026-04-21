@@ -7,6 +7,7 @@ import OutlineBox from "./ui/OutlineBox";
 import GhostText from "./ui/GhostText";
 import DotCluster from "./ui/DotCluster";
 import { useLead } from "./LeadContext";
+import { characterStyle } from "@/lib/characterStyle";
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -26,7 +27,7 @@ export default function Hero({ data }) {
 
         <div className="relative z-10">
           <motion.h1
-            className="font-display font-extrabold leading-[1.02] text-5xl md:text-7xl"
+            className="font-display font-extrabold leading-[1.04] text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl"
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE }}
@@ -101,7 +102,7 @@ export default function Hero({ data }) {
           </div>
 
           {data.hero_image_url ? (
-            <div className="relative z-10 w-full max-w-md aspect-[3/4] flex items-end justify-center">
+            <div className="relative z-10 w-full max-w-xs sm:max-w-sm md:max-w-md aspect-[3/4] flex items-end justify-center mx-auto">
               <div
                 aria-hidden="true"
                 className="absolute inset-0 glow-breath"
@@ -113,6 +114,7 @@ export default function Hero({ data }) {
               <img
                 src={data.hero_image_url}
                 alt="Himanshu Bhardwaj — FONSI"
+                style={characterStyle(data.hero_image_settings)}
                 className="relative z-10 w-full h-full object-contain object-bottom drop-shadow-[0_20px_60px_rgba(229,28,35,0.35)]"
               />
             </div>

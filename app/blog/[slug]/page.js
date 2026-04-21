@@ -65,7 +65,7 @@ export default async function BlogPost({ params }) {
 
   return (
     <>
-      <Nav />
+      <Nav settings={settings} />
       <main>
         <article className="section max-w-3xl">
           <Reveal>

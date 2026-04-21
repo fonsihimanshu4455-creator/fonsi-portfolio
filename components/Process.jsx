@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import SectionHeading from "./ui/SectionHeading";
+import { characterStyle } from "@/lib/characterStyle";
 
-export default function Process({ data = [], characterUrl }) {
+export default function Process({ data = [], characterUrl, characterSettings }) {
   return (
     <section id="about" className="section relative">
       {characterUrl && (
@@ -11,6 +12,7 @@ export default function Process({ data = [], characterUrl }) {
           src={characterUrl}
           alt=""
           aria-hidden="true"
+          style={characterStyle(characterSettings)}
           className="hidden md:block absolute right-4 -top-8 w-44 lg:w-56 pointer-events-none select-none drop-shadow-[0_20px_60px_rgba(229,28,35,0.35)] z-0"
         />
       )}

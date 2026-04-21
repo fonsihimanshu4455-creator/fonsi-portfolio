@@ -2,7 +2,7 @@
 
 import SingletonForm from "@/components/admin/SingletonForm";
 import { Field, Input, Textarea } from "@/components/admin/Field";
-import ImageUpload from "@/components/admin/ImageUpload";
+import CharacterField from "@/components/admin/CharacterField";
 
 const BLANK = {
   heading_prefix: "",
@@ -11,6 +11,7 @@ const BLANK = {
   subheading: "",
   global_line: "",
   hero_image_url: "",
+  hero_image_settings: {},
   cta_primary_text: "",
   cta_primary_link: "",
   cta_secondary_text: "",
@@ -47,16 +48,14 @@ export default function HeroAdminPage() {
             </div>
           </div>
 
-          <div>
-            <ImageUpload
-              value={d.hero_image_url}
-              onChange={(v) => set({ ...d, hero_image_url: v })}
-              label="Hero image (your stylized photo — transparent PNG recommended)"
-            />
-            <p className="mt-2 text-xs text-[color:var(--color-muted)]">
-              Shown in the hero card (3:4 aspect). If empty, a placeholder glow is shown.
-            </p>
-          </div>
+          <CharacterField
+            label="Hero image (your stylized photo — transparent PNG recommended)"
+            hint="Shown in the hero card. Use Scale + Offset to fine-tune position. Empty = placeholder."
+            url={d.hero_image_url}
+            onUrlChange={(v) => set({ ...d, hero_image_url: v })}
+            settings={d.hero_image_settings}
+            onSettingsChange={(s) => set({ ...d, hero_image_settings: s })}
+          />
 
           <div className="grid sm:grid-cols-2 gap-4">
             <Field label="Primary CTA text">

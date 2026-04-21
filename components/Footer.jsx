@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin, Instagram, Twitter, Youtube, Send } from "lucide-react";
 import Logo from "./ui/Logo";
+import { characterStyle } from "@/lib/characterStyle";
 
 const SERVICES = [
   "Digital Ads",
@@ -26,17 +27,23 @@ export default function Footer({ settings = {} }) {
     <footer className="mt-10">
       <hr className="dashed-divider" />
 
-      <div className="max-w-[1280px] mx-auto px-6 md:px-8 py-14 grid md:grid-cols-[1.4fr_1fr_1fr] gap-12">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-8 py-10 md:py-14 grid sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr] gap-10 md:gap-12">
         <div>
           <div className="flex items-start gap-4 mb-5">
-            <a href="#home" className="inline-block" aria-label="FONSI home">
-              <Logo size="lg" />
+            <a href="/#home" className="inline-block" aria-label="Home">
+              <Logo
+                size="lg"
+                wordmark={settings.logo_wordmark ?? "FONSI"}
+                showWordmark={!settings.logo_hide_wordmark}
+                imageUrl={settings.logo_url || null}
+              />
             </a>
             {settings.footer_character_url && (
               <img
                 src={settings.footer_character_url}
                 alt=""
                 aria-hidden="true"
+                style={characterStyle(settings.character_settings?.footer)}
                 className="w-20 h-20 object-contain object-bottom drop-shadow-[0_8px_24px_rgba(229,28,35,0.35)]"
               />
             )}
