@@ -108,19 +108,27 @@ export default function Hero({ data }) {
                   "radial-gradient(closest-side, rgba(229,28,35,0.35), transparent 70%)",
               }}
             />
-            <div className="relative z-10 text-center px-6">
-              <motion.div
-                aria-hidden="true"
-                className="font-display text-7xl md:text-8xl"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              >
-                🔥
-              </motion.div>
-              <p className="mt-4 text-sm text-[color:var(--color-muted)]">
-                Your hero image goes here
-              </p>
-            </div>
+            {data.hero_image_url ? (
+              <img
+                src={data.hero_image_url}
+                alt="Himanshu Bhardwaj — FONSI"
+                className="relative z-10 w-full h-full object-cover object-center"
+              />
+            ) : (
+              <div className="relative z-10 text-center px-6">
+                <motion.div
+                  aria-hidden="true"
+                  className="font-display text-7xl md:text-8xl"
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  🔥
+                </motion.div>
+                <p className="mt-4 text-sm text-[color:var(--color-muted)]">
+                  Your hero image goes here
+                </p>
+              </div>
+            )}
           </div>
         </motion.div>
       </div>

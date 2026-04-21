@@ -13,6 +13,7 @@ create table if not exists hero_content (
   heading_suffix text,
   subheading text,
   global_line text,
+  hero_image_url text,
   cta_primary_text text,
   cta_primary_link text,
   cta_secondary_text text,
@@ -20,6 +21,7 @@ create table if not exists hero_content (
   updated_at timestamptz default now(),
   constraint hero_single_row check (id = 1)
 );
+alter table hero_content add column if not exists hero_image_url text;
 
 -- ----- 2. stats -------------------------------------------------------------
 create table if not exists stats (
