@@ -174,3 +174,94 @@ body {
     animation: none !important;
   }
 }
+
+/* Markdown article styles (blog posts + case studies) */
+.prose-fonsi {
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.75;
+  font-size: 1rem;
+}
+.prose-fonsi > * + * { margin-top: 1.2em; }
+.prose-fonsi h1, .prose-fonsi h2, .prose-fonsi h3, .prose-fonsi h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+  line-height: 1.2;
+}
+.prose-fonsi h1 { font-size: 2.25rem; }
+.prose-fonsi h2 { font-size: 1.75rem; }
+.prose-fonsi h3 { font-size: 1.35rem; }
+.prose-fonsi h4 { font-size: 1.1rem; }
+.prose-fonsi p  { color: var(--color-text); opacity: 0.9; }
+.prose-fonsi a  {
+  color: var(--color-red);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-fonsi a:hover { color: var(--color-red-hot); }
+.prose-fonsi strong { color: var(--color-text); font-weight: 700; }
+.prose-fonsi em { color: var(--color-text); }
+.prose-fonsi ul, .prose-fonsi ol { padding-left: 1.4em; }
+.prose-fonsi ul { list-style: disc; }
+.prose-fonsi ol { list-style: decimal; }
+.prose-fonsi li { margin: 0.4em 0; opacity: 0.9; }
+.prose-fonsi li::marker { color: var(--color-red); }
+.prose-fonsi blockquote {
+  border-left: 3px solid var(--color-red);
+  padding: 0.2em 1.2em;
+  margin: 1.6em 0;
+  color: var(--color-muted);
+  font-style: italic;
+}
+.prose-fonsi code {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--color-stroke);
+  padding: 0.12em 0.4em;
+  border-radius: 6px;
+  font-size: 0.9em;
+  color: var(--color-red-hot);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+.prose-fonsi pre {
+  background: var(--color-surface);
+  border: 1px solid var(--color-stroke);
+  padding: 1.1em 1.2em;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+.prose-fonsi pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: var(--color-text);
+}
+.prose-fonsi hr {
+  border: 0;
+  border-top: 1px dashed rgba(255,255,255,0.14);
+  margin: 2.5em 0;
+}
+.prose-fonsi img {
+  border-radius: 12px;
+  border: 1px solid var(--color-stroke);
+  max-width: 100%;
+}
+.prose-fonsi table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92em;
+}
+.prose-fonsi th, .prose-fonsi td {
+  border: 1px solid var(--color-stroke);
+  padding: 0.6em 0.9em;
+  text-align: left;
+}
+.prose-fonsi th {
+  background: rgba(255,255,255,0.03);
+  font-weight: 600;
+}

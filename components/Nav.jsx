@@ -7,11 +7,11 @@ import Logo from "./ui/Logo";
 import { useLead } from "./LeadContext";
 
 const LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#services", label: "Services" },
-  { href: "#work", label: "Work" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#services", label: "Services" },
+  { href: "/#work", label: "Work" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#about", label: "About" },
 ];
 
 export default function Nav() {
