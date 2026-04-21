@@ -35,8 +35,8 @@ export default function CtaBanner() {
               Something <OutlineBox>Amazing</OutlineBox>
             </h3>
             <p className="mt-5 text-[color:var(--color-muted)] max-w-md">
-              Tell me about your brand, your offer, and where you&apos;re stuck.
-              I&apos;ll come back with a no-fluff plan.
+              Tell me about your brand and your market — wherever you&apos;re based.
+              I work across time zones and deliver async, with clear updates every step.
             </p>
 
             <form onSubmit={onSubmit} className="mt-7 flex items-center gap-2 max-w-md">

@@ -5,7 +5,7 @@ const STATS = [
   { value: "100+", label: "Campaigns Run" },
   { value: "4.8x", label: "Average ROAS" },
   { value: "3+", label: "Years Experience" },
-  { value: "24/7", label: "Client Support" },
+  { value: "10+", label: "Countries · Global Clients" },
 ];
 
 export default function Stats() {

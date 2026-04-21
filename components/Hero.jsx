@@ -41,6 +41,9 @@ export default function Hero() {
           >
             I&apos;m Himanshu Bhardwaj — FONSI. I run performance ads, grow brands,
             and design graphics & edit video that stop the scroll and move the numbers.
+            <span className="block mt-3 text-sm text-[color:var(--color-text)]/70">
+              Serving clients across India, US, UK, UAE & globally — async-first across time zones.
+            </span>
           </motion.p>
 
           <motion.div

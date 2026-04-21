@@ -30,9 +30,12 @@ export default function Footer() {
               <Phone size={14} /> +91 00000 00000
             </div>
             <div className="flex items-center gap-2 text-[color:var(--color-muted)]">
-              <MapPin size={14} /> India
+              <MapPin size={14} /> India · Worldwide
             </div>
           </div>
+          <p className="mt-3 text-xs text-[color:var(--color-muted)]/80">
+            Available across time zones · India · US · UK · UAE · Global
+          </p>
 
           <div className="mt-6 flex gap-3">
             {[Send, Twitter, Instagram, Youtube].map((Icon, i) => (
