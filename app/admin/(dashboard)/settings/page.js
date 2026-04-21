@@ -2,6 +2,7 @@
 
 import SingletonForm from "@/components/admin/SingletonForm";
 import { Field, Input, Textarea } from "@/components/admin/Field";
+import ImageUpload from "@/components/admin/ImageUpload";
 
 const BLANK = {
   contact_email: "",
@@ -14,6 +15,12 @@ const BLANK = {
   cta_heading_highlight: "",
   cta_heading_suffix: "",
   cta_subcopy: "",
+  cta_character_url: "",
+  achievements_character_url: "",
+  process_character_url: "",
+  skills_character_url: "",
+  not_found_character_url: "",
+  footer_character_url: "",
 };
 
 export default function SettingsAdmin() {
@@ -72,6 +79,47 @@ export default function SettingsAdmin() {
                     <Textarea rows={3} value={d.cta_subcopy || ""} onChange={(e) => set({ ...d, cta_subcopy: e.target.value })} />
                   </Field>
                 </div>
+              </div>
+            </section>
+
+            <section>
+              <div className="font-display font-bold mb-1">Characters</div>
+              <p className="text-xs text-[color:var(--color-muted)] mb-5">
+                Optional stylized character images. Leave any field empty to keep
+                the current design (emoji / plain section). Transparent PNGs
+                recommended.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-6">
+                <ImageUpload
+                  value={d.cta_character_url}
+                  onChange={(v) => set({ ...d, cta_character_url: v })}
+                  label="CTA banner character (replaces 🚀)"
+                />
+                <ImageUpload
+                  value={d.achievements_character_url}
+                  onChange={(v) => set({ ...d, achievements_character_url: v })}
+                  label="Achievements character (next to 20+)"
+                />
+                <ImageUpload
+                  value={d.process_character_url}
+                  onChange={(v) => set({ ...d, process_character_url: v })}
+                  label="My Process character"
+                />
+                <ImageUpload
+                  value={d.skills_character_url}
+                  onChange={(v) => set({ ...d, skills_character_url: v })}
+                  label="Skills / Focus Areas character"
+                />
+                <ImageUpload
+                  value={d.not_found_character_url}
+                  onChange={(v) => set({ ...d, not_found_character_url: v })}
+                  label="404 page character"
+                />
+                <ImageUpload
+                  value={d.footer_character_url}
+                  onChange={(v) => set({ ...d, footer_character_url: v })}
+                  label="Footer mascot (small)"
+                />
               </div>
             </section>
           </div>

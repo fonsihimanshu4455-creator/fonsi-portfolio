@@ -3,9 +3,17 @@
 import { motion } from "framer-motion";
 import SectionHeading from "./ui/SectionHeading";
 
-export default function Process({ data = [] }) {
+export default function Process({ data = [], characterUrl }) {
   return (
-    <section id="about" className="section">
+    <section id="about" className="section relative">
+      {characterUrl && (
+        <img
+          src={characterUrl}
+          alt=""
+          aria-hidden="true"
+          className="hidden md:block absolute right-4 -top-8 w-44 lg:w-56 pointer-events-none select-none drop-shadow-[0_20px_60px_rgba(229,28,35,0.35)] z-0"
+        />
+      )}
       <SectionHeading>My Process</SectionHeading>
       <p className="text-[color:var(--color-muted)] max-w-xl mb-16">
         A simple four-step flow I run with every client — big or small.

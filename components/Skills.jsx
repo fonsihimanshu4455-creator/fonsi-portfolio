@@ -4,16 +4,25 @@ import { useState } from "react";
 import SectionHeading from "./ui/SectionHeading";
 import clsx from "clsx";
 
-export default function Skills({ data = [] }) {
+export default function Skills({ data = [], characterUrl }) {
   const [active, setActive] = useState(0);
 
   if (data.length === 0) return null;
 
   return (
-    <section className="section">
+    <section className="section relative">
       <SectionHeading>My Focus Areas</SectionHeading>
 
-      <div className="grid md:grid-cols-2 gap-10 items-center">
+      {characterUrl && (
+        <img
+          src={characterUrl}
+          alt=""
+          aria-hidden="true"
+          className="hidden md:block absolute right-0 bottom-0 w-56 lg:w-64 pointer-events-none select-none opacity-90 drop-shadow-[0_20px_60px_rgba(229,28,35,0.35)] z-0"
+        />
+      )}
+
+      <div className="grid md:grid-cols-2 gap-10 items-center relative z-10">
         <div className="flex flex-col gap-4 max-w-sm">
           {data.map((s, i) => {
             const isActive = i === active;

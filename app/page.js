@@ -68,9 +68,13 @@ export default async function Page() {
         <Work data={projects} />
         <MoreWork data={futureProjects} />
         <WebsiteFeatures data={websiteFeatures} />
-        <Process data={journey} />
-        <Achievements headline={achievements.headline} wins={achievements.wins} />
-        <Skills data={skills} />
+        <Process data={journey} characterUrl={settings.process_character_url} />
+        <Achievements
+          headline={achievements.headline}
+          wins={achievements.wins}
+          characterUrl={settings.achievements_character_url}
+        />
+        <Skills data={skills} characterUrl={settings.skills_character_url} />
         <Testimonials data={testimonials} />
         <Faq />
         <CtaBanner settings={settings} />

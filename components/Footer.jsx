@@ -28,9 +28,19 @@ export default function Footer({ settings = {} }) {
 
       <div className="max-w-[1280px] mx-auto px-6 md:px-8 py-14 grid md:grid-cols-[1.4fr_1fr_1fr] gap-12">
         <div>
-          <a href="#home" className="mb-5 inline-block" aria-label="FONSI home">
-            <Logo size="lg" />
-          </a>
+          <div className="flex items-start gap-4 mb-5">
+            <a href="#home" className="inline-block" aria-label="FONSI home">
+              <Logo size="lg" />
+            </a>
+            {settings.footer_character_url && (
+              <img
+                src={settings.footer_character_url}
+                alt=""
+                aria-hidden="true"
+                className="w-20 h-20 object-contain object-bottom drop-shadow-[0_8px_24px_rgba(229,28,35,0.35)]"
+              />
+            )}
+          </div>
           <p className="text-sm text-[color:var(--color-muted)] max-w-sm leading-relaxed">
             {settings.footer_description ||
               "Himanshu Bhardwaj — digital marketer, designer, and editor helping brands grow with performance ads and creative that actually converts."}

@@ -69,15 +69,24 @@ export default function CtaBanner({ settings = {} }) {
           </div>
 
           <div className="relative flex items-center justify-center min-h-[240px]">
-            <div className="relative w-48 h-56 md:w-60 md:h-72 rounded-3xl overflow-hidden flex items-center justify-center">
+            <div className="relative w-48 h-56 md:w-72 md:h-80 flex items-end justify-center">
               <div
-                className="absolute inset-0"
+                aria-hidden="true"
+                className="absolute inset-0 glow-breath"
                 style={{
                   background:
                     "radial-gradient(closest-side, rgba(255,45,53,0.45), transparent 70%)",
                 }}
               />
-              <div aria-hidden="true" className="relative text-7xl">🚀</div>
+              {settings.cta_character_url ? (
+                <img
+                  src={settings.cta_character_url}
+                  alt=""
+                  className="relative z-10 w-full h-full object-contain object-bottom drop-shadow-[0_20px_60px_rgba(229,28,35,0.35)]"
+                />
+              ) : (
+                <div aria-hidden="true" className="relative text-7xl">🚀</div>
+              )}
             </div>
           </div>
         </div>

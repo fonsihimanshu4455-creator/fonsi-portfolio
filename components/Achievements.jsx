@@ -1,10 +1,18 @@
 import SectionHeading from "./ui/SectionHeading";
 import DotCluster from "./ui/DotCluster";
 
-export default function Achievements({ headline, wins = [] }) {
+export default function Achievements({ headline, wins = [], characterUrl }) {
   return (
-    <section className="section">
-      <div className="grid md:grid-cols-2 gap-14 items-start">
+    <section className="section relative">
+      {characterUrl && (
+        <img
+          src={characterUrl}
+          alt=""
+          aria-hidden="true"
+          className="hidden lg:block absolute right-0 top-8 w-56 xl:w-64 pointer-events-none select-none drop-shadow-[0_20px_60px_rgba(229,28,35,0.35)] z-0"
+        />
+      )}
+      <div className="grid md:grid-cols-2 gap-14 items-start relative z-10">
         <div>
           <SectionHeading>Achievements</SectionHeading>
           {headline && (
@@ -19,6 +27,14 @@ export default function Achievements({ headline, wins = [] }) {
               <p className="text-[color:var(--color-muted)] mt-4 max-w-md">
                 {headline.description}
               </p>
+              {characterUrl && (
+                <img
+                  src={characterUrl}
+                  alt=""
+                  aria-hidden="true"
+                  className="lg:hidden mt-6 w-40 drop-shadow-[0_10px_30px_rgba(229,28,35,0.35)]"
+                />
+              )}
             </>
           )}
         </div>
