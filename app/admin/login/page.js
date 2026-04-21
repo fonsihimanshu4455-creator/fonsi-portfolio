@@ -1,5 +1,5 @@
 import LoginForm from "./LoginForm";
-import DotCluster from "@/components/ui/DotCluster";
+import Logo from "@/components/ui/Logo";
 
 export default function LoginPage() {
   const configured = !!(
@@ -10,10 +10,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center px-6">
       <div className="w-full max-w-sm">
         <div className="flex items-center gap-2 mb-8 justify-center">
-          <DotCluster size={28} />
-          <span className="font-display text-2xl font-extrabold tracking-tight text-[color:var(--color-red)]">
-            FONSI
-          </span>
+          <Logo size="sm" />
           <span className="text-[color:var(--color-muted)] text-sm">· Admin</span>
         </div>
 

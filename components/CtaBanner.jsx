@@ -79,7 +79,7 @@ export default function CtaBanner({ settings = {} }) {
                     "radial-gradient(closest-side, rgba(255,45,53,0.45), transparent 70%)",
                 }}
               />
-              <div className="relative text-7xl">🚀</div>
+              <div aria-hidden="true" className="relative text-7xl">🚀</div>
             </div>
           </div>
         </div>

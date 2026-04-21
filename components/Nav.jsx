@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import PillButton from "./ui/PillButton";
-import DotCluster from "./ui/DotCluster";
+import Logo from "./ui/Logo";
 
 const LINKS = [
   { href: "#home", label: "Home" },
@@ -19,11 +19,8 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-[color:var(--color-bg)]/60 border-b border-[color:var(--color-stroke)]">
       <div className="max-w-[1280px] mx-auto px-6 md:px-8 h-20 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-2">
-          <DotCluster size={28} />
-          <span className="font-display text-2xl font-800 font-extrabold tracking-tight text-[color:var(--color-red)]">
-            FONSI
-          </span>
+        <a href="#home" aria-label="FONSI home">
+          <Logo size="sm" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8">

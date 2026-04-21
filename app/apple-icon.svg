@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <defs>
+    <radialGradient id="bg" cx="30%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#2a0a0e"/>
+      <stop offset="100%" stop-color="#0B0607"/>
+    </radialGradient>
+  </defs>
+  <rect width="180" height="180" rx="40" fill="url(#bg)"/>
+  <g fill="#E51C23" transform="translate(30 30) scale(3.75)">
+    <circle cx="13.333" cy="2.667" r="1.867"/>
+    <circle cx="18.667" cy="2.667" r="1.867"/>
+    <circle cx="8" cy="8" r="1.867"/>
+    <circle cx="13.333" cy="8" r="1.867"/>
+    <circle cx="18.667" cy="8" r="1.867"/>
+    <circle cx="24" cy="8" r="1.867"/>
+    <circle cx="2.667" cy="13.333" r="1.867"/>
+    <circle cx="8" cy="13.333" r="1.867"/>
+    <circle cx="13.333" cy="13.333" r="1.867"/>
+    <circle cx="18.667" cy="13.333" r="1.867"/>
+    <circle cx="24" cy="13.333" r="1.867"/>
+    <circle cx="29.333" cy="13.333" r="1.867"/>
+    <circle cx="8" cy="18.667" r="1.867"/>
+    <circle cx="13.333" cy="18.667" r="1.867"/>
+    <circle cx="18.667" cy="18.667" r="1.867"/>
+    <circle cx="24" cy="18.667" r="1.867"/>
+    <circle cx="13.333" cy="24" r="1.867"/>
+    <circle cx="18.667" cy="24" r="1.867"/>
+  </g>
+</svg>

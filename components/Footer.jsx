@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin, Instagram, Twitter, Youtube, Send } from "lucide-react";
-import DotCluster from "./ui/DotCluster";
+import Logo from "./ui/Logo";
 
 const SERVICES = [
   "Digital Ads",
@@ -28,11 +28,8 @@ export default function Footer({ settings = {} }) {
 
       <div className="max-w-[1280px] mx-auto px-6 md:px-8 py-14 grid md:grid-cols-[1.4fr_1fr_1fr] gap-12">
         <div>
-          <a href="#home" className="flex items-center gap-2 mb-5">
-            <DotCluster size={36} />
-            <span className="font-display text-3xl font-extrabold tracking-tight text-[color:var(--color-red)]">
-              FONSI
-            </span>
+          <a href="#home" className="mb-5 inline-block" aria-label="FONSI home">
+            <Logo size="lg" />
           </a>
           <p className="text-sm text-[color:var(--color-muted)] max-w-sm leading-relaxed">
             {settings.footer_description ||

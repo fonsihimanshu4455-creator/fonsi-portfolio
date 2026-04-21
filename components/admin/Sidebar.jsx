@@ -20,7 +20,7 @@ import {
   X,
 } from "lucide-react";
 import clsx from "clsx";
-import DotCluster from "@/components/ui/DotCluster";
+import Logo from "@/components/ui/Logo";
 
 const NAV = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard, exact: true },
@@ -45,8 +45,7 @@ export default function Sidebar() {
     <>
       <div className="md:hidden flex items-center justify-between p-4 border-b border-[color:var(--color-stroke)]">
         <div className="flex items-center gap-2">
-          <DotCluster size={22} />
-          <span className="font-display font-extrabold text-[color:var(--color-red)]">FONSI</span>
+          <Logo size="xs" pulse={false} />
           <span className="text-xs text-[color:var(--color-muted)]">Admin</span>
         </div>
         <button onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
@@ -62,10 +61,7 @@ export default function Sidebar() {
         )}
       >
         <div className="hidden md:flex items-center gap-2 px-6 py-5 border-b border-[color:var(--color-stroke)]">
-          <DotCluster size={26} />
-          <span className="font-display text-xl font-extrabold tracking-tight text-[color:var(--color-red)]">
-            FONSI
-          </span>
+          <Logo size="sm" pulse={false} />
           <span className="text-xs text-[color:var(--color-muted)] ml-auto">Admin</span>
         </div>
 

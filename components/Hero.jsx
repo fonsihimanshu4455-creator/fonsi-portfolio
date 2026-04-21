@@ -108,6 +108,7 @@ export default function Hero({ data }) {
             />
             <div className="relative z-10 text-center px-6">
               <motion.div
+                aria-hidden="true"
                 className="font-display text-7xl md:text-8xl"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
