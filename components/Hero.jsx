@@ -6,10 +6,12 @@ import PillButton from "./ui/PillButton";
 import OutlineBox from "./ui/OutlineBox";
 import GhostText from "./ui/GhostText";
 import DotCluster from "./ui/DotCluster";
+import { useLead } from "./LeadContext";
 
 const EASE = [0.22, 1, 0.36, 1];
 
 export default function Hero({ data }) {
+  const { openForm } = useLead();
   return (
     <section id="home" className="relative overflow-hidden">
       <div className="section pt-10 md:pt-16 grid md:grid-cols-2 gap-10 items-center relative">
@@ -67,7 +69,7 @@ export default function Hero({ data }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
           >
-            <PillButton href={data.cta_primary_link || "#contact"}>
+            <PillButton as="button" onClick={() => openForm()}>
               {data.cta_primary_text || "Start a Project"}
             </PillButton>
             <a

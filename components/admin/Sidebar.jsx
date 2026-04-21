@@ -18,12 +18,18 @@ import {
   Settings,
   Menu,
   X,
+  Inbox,
+  FileText,
+  FolderKanban,
 } from "lucide-react";
 import clsx from "clsx";
 import Logo from "@/components/ui/Logo";
 
 const NAV = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard, exact: true },
+  { href: "/admin/leads", label: "Leads", icon: Inbox },
+  { href: "/admin/blog", label: "Blog", icon: FileText },
+  { href: "/admin/case-studies", label: "Case Studies", icon: FolderKanban },
   { href: "/admin/hero", label: "Hero", icon: Sparkles },
   { href: "/admin/stats", label: "Stats", icon: BarChart3 },
   { href: "/admin/services", label: "Services", icon: Briefcase },

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import PillButton from "./ui/PillButton";
 import Logo from "./ui/Logo";
+import { useLead } from "./LeadContext";
 
 const LINKS = [
   { href: "#home", label: "Home" },
@@ -15,6 +16,7 @@ const LINKS = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const { openForm } = useLead();
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-[color:var(--color-bg)]/60 border-b border-[color:var(--color-stroke)]">
@@ -36,7 +38,7 @@ export default function Nav() {
         </nav>
 
         <div className="hidden md:block">
-          <PillButton href="#contact">Let&apos;s Talk</PillButton>
+          <PillButton as="button" onClick={() => openForm()}>Let&apos;s Talk</PillButton>
         </div>
 
         <button
@@ -61,7 +63,14 @@ export default function Nav() {
                 {l.label}
               </a>
             ))}
-            <PillButton href="#contact" className="self-start mt-2">
+            <PillButton
+              as="button"
+              onClick={() => {
+                setOpen(false);
+                openForm();
+              }}
+              className="self-start mt-2"
+            >
               Let&apos;s Talk
             </PillButton>
           </div>

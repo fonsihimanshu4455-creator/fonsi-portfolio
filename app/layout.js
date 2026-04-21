@@ -1,5 +1,9 @@
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
+import { LeadProvider } from "@/components/LeadContext";
+import LeadModal from "@/components/LeadModal";
 import {
   SITE_URL,
   SITE_NAME,
@@ -135,7 +139,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body>
-        {children}
+        <LeadProvider>
+          {children}
+          <LeadModal />
+        </LeadProvider>
+        <Analytics />
+        <SpeedInsights />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

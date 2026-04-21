@@ -3,17 +3,15 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import OutlineBox from "./ui/OutlineBox";
+import { useLead } from "./LeadContext";
 
 export default function CtaBanner({ settings = {} }) {
   const [email, setEmail] = useState("");
+  const { openForm } = useLead();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!email) return;
-    const to = settings.contact_email || "hello@fonsi.co";
-    const subject = encodeURIComponent("Let's build something with FONSI");
-    const body = encodeURIComponent(`Hi Himanshu, I'd like to connect. My email: ${email}`);
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    openForm();
   };
 
   const prefix = settings.cta_heading_prefix ?? "Let's Build\nSomething ";

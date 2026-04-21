@@ -11,9 +11,15 @@ import {
   Target,
   MessageSquare,
   Settings,
+  Inbox,
+  FileText,
+  FolderKanban,
 } from "lucide-react";
 
 const CARDS = [
+  { href: "/admin/leads", label: "Leads", icon: Inbox, desc: "Contact form submissions" },
+  { href: "/admin/blog", label: "Blog", icon: FileText, desc: "Posts & insights" },
+  { href: "/admin/case-studies", label: "Case Studies", icon: FolderKanban, desc: "Deep-dive project pages" },
   { href: "/admin/hero", label: "Hero", icon: Sparkles, desc: "Headline, subhead, CTAs" },
   { href: "/admin/stats", label: "Stats", icon: BarChart3, desc: "Numbers band" },
   { href: "/admin/services", label: "Services", icon: Briefcase, desc: "What I do cards" },
